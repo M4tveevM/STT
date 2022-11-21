@@ -1,36 +1,40 @@
 # Please, work!
-# imports
+import os
 import sqlite3
 import sys
+
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QLabel, QApplication, \
     QMainWindow
 from PyQt5 import uic
 
-last_user = ''
 
-
-class Ui(QMainWindow):
+class Login_UI(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('login_ui.ui', self)
-        self.initUI()
+        uic.loadUi('login.ui', self)
+        self.loginUI()
+        self.login = ''
 
-    def check_login(self):
-        # global last_user
-        password = self.password_input.text()
-        login = self.login_input.text()
+    def connect_db(self, request):
         con = sqlite3.connect('login.db')
         cur = con.cursor()
-        result_login = cur.execute(
-            f'''SELECT name FROM users where login = "{login}"''').fetchall()
         result = cur.execute(
-            f'''SELECT name FROM users where login = "{login}" and password = "{password}"
-            ''').fetchall()
+            f'''{request}''').fetchall()
         con.close()
+        return result
+
+    def check_login(self):
+        password = self.password_input.text()
+        login = self.login_input.text()
+        result_login = self.connect_db(
+            f'''SELECT name FROM users where login = "{login}"''')
+        result = self.connect_db(
+            f'''SELECT name FROM users where login = "{login}" 
+            and password = "{password}"''')
         if len(result_login) == 0:
-            return 'login'
+            return 'login error'
         if len(result_login) > 0:
-            # last_user = login
+            self.login = login
             return result
 
     def login(self):
@@ -48,7 +52,7 @@ class Ui(QMainWindow):
                 "Ошибка: Длинна поля Pass\n не может состоять из < 8 символов!")
         else:
             self.error_box.setText('Сверяю данные с БД')
-            if self.check_login() == 'login':
+            if self.check_login() == 'login error':
                 self.error_box.setText('Такого login нет в системе.'
                                        '\nПроверьте правильность написания.')
             elif len(self.check_login()) == 0:
@@ -57,16 +61,16 @@ class Ui(QMainWindow):
             else:
                 self.error_box.setText(f'Добрый день,  {self.check_login()[0][0]}\n'
                                        f'Загружаю базу перелётов.')
+                os.system(f'python main_screen.py {self.login}')
             self.password_input.setText('')
 
-    def initUI(self):
+    def loginUI(self):
         self.login_submit_btn.clicked.connect(self.login)
-        self.login_input.setText(last_user)
 
 
 def main():
     app = QApplication(sys.argv)
-    ex = Ui()
+    ex = Login_UI()
     ex.show()
     sys.exit(app.exec())
 

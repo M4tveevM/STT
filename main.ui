@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>970</width>
+                <height>540</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QWidget" name="verticalLayoutWidget_3">
+                <property name="geometry">
+                    <rect>
+                        <x>580</x>
+                        <y>10</y>
+                        <width>381</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                    <item>
+                        <widget class="QLabel" name="main_weather">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Погода Tallinn:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QLabel" name="main_temp">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>30</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Температура:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QTextBrowser" name="additional_weather"/>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QWidget" name="verticalLayoutWidget_4">
+                <property name="geometry">
+                    <rect>
+                        <x>580</x>
+                        <y>250</y>
+                        <width>381</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <item>
+                        <widget class="QLabel" name="destination_weather_2">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Погода в пункте назначения:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QLabel" name="destination_temp">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>30</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Температура:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QTextBrowser" name="destination_weather"/>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QWidget" name="verticalLayoutWidget">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>561</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                    <item>
+                        <widget class="QLabel" name="welcome_title">
+                            <property name="text">
+                                <string>Добрый день, user, выберите рейс для просмотра
+                                    информации о нём.
+                                </string>
+                            </property>
+                            <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QPushButton" name="search_btn">
+                <property name="geometry">
+                    <rect>
+                        <x>480</x>
+                        <y>120</y>
+                        <width>81</width>
+                        <height>26</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Поиск</string>
+                </property>
+            </widget>
+            <widget class="Line" name="line">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>240</y>
+                        <width>571</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                </property>
+            </widget>
+            <widget class="Line" name="line_2">
+                <property name="geometry">
+                    <rect>
+                        <x>560</x>
+                        <y>0</y>
+                        <width>20</width>
+                        <height>481</height>
+                    </rect>
+                </property>
+                <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                </property>
+            </widget>
+            <widget class="QWidget" name="verticalLayoutWidget_2">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>50</y>
+                        <width>461</width>
+                        <height>181</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                    <item>
+                        <widget class="QTableWidget" name="airline_flights"/>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QWidget" name="verticalLayoutWidget_5">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>270</y>
+                        <width>461</width>
+                        <height>201</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                    <item>
+                        <widget class="QTableWidget" name="aircraft_information"/>
+                    </item>
+                </layout>
+            </widget>
+        </widget>
+        <widget class="QMenuBar" name="menubar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>970</width>
+                    <height>21</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QStatusBar" name="statusbar"/>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
