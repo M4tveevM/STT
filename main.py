@@ -3,8 +3,7 @@ import os
 import sqlite3
 import sys
 
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QLabel, QApplication, \
-    QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
 
 
@@ -16,7 +15,7 @@ class Login_UI(QMainWindow):
         self.login = ''
 
     def connect_db(self, request):
-        con = sqlite3.connect('login.db')
+        con = sqlite3.connect('airport.db')
         cur = con.cursor()
         result = cur.execute(
             f'''{request}''').fetchall()
