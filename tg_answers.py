@@ -24,7 +24,8 @@ def create_user(user_id):
 
 
 def clean_user(user_id):
-    connect_db(f"UPDATE users SET tg_message_chat_id = NULL")
+    connect_db(f"UPDATE users SET tg_message_chat_id = NULL where "
+               f"tg_message_chat_id = {user_id}")
     connect_db(f"update tg_auth set phase = False where message_chat_id = {user_id}")
 
 
@@ -33,9 +34,22 @@ def get_flights(user_id):
      FROM flights where flights.airline = (select users.airline from users where
                             tg_message_chat_id = "{user_id}") order by flights.date''')
     answer = []
-    for x in result:
-        answer.append(' | '.join(x))
-    return "Вот рейсы вашей авиакомпании:\n"'\n'.join(answer)
+    for elem in result:
+        answer.append(' | '.join(elem))
+    return "Вот рейсы вашей авиакомпании:\n\n" + '\n'.join(answer)
+
+
+def get_flight(flight_id):
+    flight_id = flight_id.upper()
+    aircraft_id = connect_db(
+        f'''SELECT aircraft_id from flights where flight_id = "{flight_id}"''')
+    if aircraft_id:
+        aircraft_db_info = connect_db(f'''SELECT model, date_of_manufacture,mileage,
+         speed, engines, wingspan, height, length FROM aircrafts where aircrafts.id = 
+         "{aircraft_id[0][0]}"''')
+        return f'Вот подробная информация о самолёте с рейса {flight_id}:\n\n' + \
+               ' | '.join([str(elem) for elem in aircraft_db_info[0]])
+    return answ('error_flight')
 
 
 def is_user_in_main_db(user_id):

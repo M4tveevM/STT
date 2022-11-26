@@ -3,11 +3,8 @@ import os
 import sqlite3
 import sys
 import random
-import asyncio
-import time
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import uic
 
 

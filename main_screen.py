@@ -7,7 +7,6 @@ import pymorphy2
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QHeaderView
-from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 
 # --- </imports> ---

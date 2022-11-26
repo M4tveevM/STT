@@ -42,7 +42,10 @@ def text(message):
                            tg_answers.try_auth(user_id, message.text).format(
                                message.from_user, tgbot.get_me()), parse_mode='html')
     else:
-        pass
+        tgbot.send_message(message.chat.id,
+                           tg_answers.get_flight(message.text).format(message.from_user,
+                                                                      tgbot.get_me()),
+                           parse_mode='html')
 
 
 def main():
