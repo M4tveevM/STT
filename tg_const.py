@@ -1,0 +1,3 @@
+TOKEN = '1959685216:AAGcCFZS1wlbKZ1-zSwJLR5iC4vs59dClx8'
+
+SQL_FILE = 'airport.db'
